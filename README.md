@@ -18,16 +18,16 @@
 | name        | string     | null: false                    |
 | number      | string     | null: false, unique: true      |
 | category_id | integer    | null: false                    |
-| material    | string     |                                |
-| price       | integer    |                                |
-| supplier_id | integer    |                                |
+| material    | string     | null: false                    |
+| price       | integer    | null: false                    |
+| supplier_id | integer    | null: false                    |
 | user        | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :parts_count
-- has_many :part_product
+- has_many :amount_of_necessary_part 
 
 ## parts_stock テーブル
 
@@ -52,7 +52,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :part_product
+- has_many :amount_of_necessary_part 
 
 ## amount_of_necessary_part テーブル
 
