@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zaiko</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">Zaiko</a></h1>
+        <div class="user_nav grig-6">
+          <a class="post" href="/parts/new">登録する</a>
+        </div>
+      </div>
+    </header>
+    <%= yield %>
+    <footer>
+      <p>
+        在庫管理
+      </p>
+    </footer>
+  </body>
+</html>
