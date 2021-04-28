@@ -2,13 +2,13 @@
   <div class="container">
     <h3>登録する</h3>
     <%= form_with(model: @part, local: true) do |f| %>
-      <%= f.text_filed :name, placeholder: "Name" %>
-      <%= f.text_filed :number, placeholder: "Number" %>
-      <%= f.text_filed :category, placeholder: "Category" %>
-      <%= f.text_filed :material, placehodlder: "Material" %>
-      <%= f.text_filed :price, placehholder: "Price" %>
-      <%= f.text_filed :supplier, placeholder:  "Supplier" %>
-      <%= f.submit "REGISTER" %>
+      <%= f.text_field :name, placeholder: "名称" %>
+      <%= f.text_field :number, placeholder: "規格" %>
+      <%= f.text_field :category, placeholder: "カテゴリー" %>
+      <%= f.text_field :material, placeholder: "材料" %>
+      <%= f.text_field :price, placeholder: "価格" %>
+      <%= f.text_field :supplier, placeholder:  "サプライヤー" %>
+      <%= f.submit "登録" %>
     <% end %>
   </div>
 </div>
