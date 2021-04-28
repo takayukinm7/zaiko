@@ -26,7 +26,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :parts_count
+- has_one :parts_stock
 - has_many :amount_of_necessary_part 
 
 ## parts_stock テーブル
