@@ -1,0 +1,9 @@
+<%= form_with(model: @part, local: true) do |f| %>
+      <%= f.text_field :name, placeholder: "名称" %><br />
+      <%= f.text_field :number, placeholder: "規格" %><br />
+      <%= f.text_field :category, placeholder: "カテゴリー" %><br />
+      <%= f.text_field :material, placeholder: "材料" %><br />
+      <%= f.text_field :price, placeholder: "価格" %><br />
+      <%= f.text_field :supplier, placeholder:  "サプライヤー" %><br />
+      <%= f.submit "部品登録" %>
+    <% end %>

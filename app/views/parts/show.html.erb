@@ -1,16 +1,18 @@
 <div class="contents row">
   <div class="content_post" style="background-image: url(<%= @part.image %>);">
-    <div class="more">
-      <span><%= image_tag 'arrow_top.png' %></span>
-      <ul class="more_list">
-        <li>
-          <%= link_to '編集', edit_part_path(@part.id), method: :get %>
-        </li>
-        <li>
-          <%= link_to '削除', part_path(@part.id), method: :delete %>
-        </li>
-      </ul>
-    </div>
+    <% if user_signed_in? && current_user.id == @part.user_id %>
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to '編集', edit_part_path(@part.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', part_path(@part.id), method: :delete %>
+          </li>
+        </ul>
+      </div>
+    <% end %>  
     <p><%= @part.name %></p>
     <span class="name"><%= @part.name %>
     </span>

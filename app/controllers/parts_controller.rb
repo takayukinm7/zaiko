@@ -3,7 +3,7 @@ class PartsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
 
   def index 
-    @parts = Part.include(:user)
+    @parts = Part.include(:user).order("created_at DESC")
   end
 
   def new

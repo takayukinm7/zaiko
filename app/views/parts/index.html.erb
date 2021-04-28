@@ -1,21 +1,5 @@
 <div class="contents row">
   <% @parts.each do |part| %>
-    <div class="content_post" style="background-image: url(<%= part.image %>);">
-       <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-          <li>
-            <%= link_to '詳細', part_path(part.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '編集', edit_part_path(part.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', part_path(part.id), method: :delete %>
-          </li>
-        </ul>
-      </div>
-      <p><%= part.name %></p>
-    </div>
+    <%= render partial: "part", locals: { part: part } %>
   <% end %>
 </div>
