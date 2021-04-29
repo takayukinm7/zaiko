@@ -1,8 +1,9 @@
 class Part < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
+
   with_options presence: true do
     validates :name
+    validates :number
     validates :material
     validates :price, format: { with: /\A[0-9]+\z/ }
     with_options numericality: { other_than: 1 } do
@@ -10,9 +11,6 @@ class Part < ApplicationRecord
       validates :supplier_id
     end
   end   
-
-  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-  validates :number, presence: true, format: { with: VALID_PASSWORD_REGEX } 
 
   belongs_to :user
   has_many :amount_of_necessary_part

@@ -11,7 +11,7 @@ class PartsController < ApplicationController
   end
 
   def create
-    Part.create(part_params)
+    Part.create!(part_params)
   end
 
   def destroy
