@@ -1,9 +1,9 @@
 class PartsController < ApplicationController
   before_action :set_part, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
 
   def index 
-    @parts = Part.include(:user).order("created_at DESC")
+    @parts = Part.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -28,6 +28,10 @@ class PartsController < ApplicationController
   end
 
   def show
+  end
+
+  def search
+    @parts = Part.search(params[:keyword])
   end
 
   private

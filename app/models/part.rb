@@ -19,4 +19,13 @@ class Part < ApplicationRecord
 
   belongs_to :category
   belongs_to :supplier
+
+  def self.search(search)
+    if search != ""
+      Part.where('text LIKE(?)', "%#{search}%")
+    else
+      Part.all 
+    end
+  end
+
 end
