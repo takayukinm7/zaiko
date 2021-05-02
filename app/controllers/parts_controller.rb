@@ -11,7 +11,13 @@ class PartsController < ApplicationController
   end
 
   def create
-    Part.create!(part_params)
+    @part = Part.new(part_params)
+    if @part.valid?
+      @part.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
@@ -36,7 +42,7 @@ class PartsController < ApplicationController
 
   private
   def part_params
-    params.require(:part).permit(:name, :number, :category_id, :material, :price, :supplier_id).merge(user_id: current_user.id)
+    params.require(:part).permit(:name, :number, :category_id, :material, :price, :supplier_id, :image).merge(user_id: current_user.id)
   end
 
   def set_part

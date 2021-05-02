@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    attributes:
+      part:
+        name: 部品名称
+        number: 規格
+        material: 材料
+        price: 価格
+        category_id: カテゴリー
+        supplier_id: サプライヤー
+        image: 図面

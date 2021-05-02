@@ -6,7 +6,7 @@ class Part < ApplicationRecord
     validates :number
     validates :material
     validates :price, format: { with: /\A[0-9]+\z/ }
-    with_options numericality: { other_than: 1 } do
+    with_options numericality: { other_than: 1 , message: "を選択してください"} do
       validates :category_id
       validates :supplier_id
     end

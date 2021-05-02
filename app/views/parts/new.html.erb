@@ -1,6 +1,9 @@
 <div class="contents row">
   <div class="container">
+  <%= form_with(model: @part, local: true) do |f| %>
     <h3>部品を登録する</h3>
+    <%= render 'layouts/error_messages', model: f.object %>
     <%= render partial: "form", locals: { part: @part } %>
+  <% end %>  
   </div>
 </div>
