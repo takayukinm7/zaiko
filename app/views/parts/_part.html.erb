@@ -16,6 +16,6 @@
       </ul>
     </div>
     <p><%= part.name %></p>
-    <%= image_tag part.image.variant(resize: '500x500'), class: 'part-image' if message.image.attached? %>
+    <%= image_tag part.image.variant(resize: '500x500'), class: 'part-image' if part.image.attached? %>
   </div>
 </div>

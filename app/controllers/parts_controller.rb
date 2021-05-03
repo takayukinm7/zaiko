@@ -11,9 +11,9 @@ class PartsController < ApplicationController
   end
 
   def create
-    @part = Part.new(part_params)
-    if @part.valid?
-      @part.save
+    binding.pry
+    @part = Part.create(part_params)
+    if @part.save
       redirect_to root_path
     else
       render 'new'

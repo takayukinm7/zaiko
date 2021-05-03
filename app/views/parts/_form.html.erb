@@ -1,9 +1,11 @@
-<%= form_with(model: @part, local: true) do |f| %>
-      <%= f.text_field :name, placeholder: "名称" %><br />
-      <%= f.text_field :number, placeholder: "規格" %><br />
-      <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"part-select"}) %><br />
-      <%= f.text_field :material, placeholder: "材料" %><br />
-      <%= f.text_field :price, placeholder: "価格" %><br />
-      <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}, {class:"part-select"}) %><br />
-      <%= f.submit "部品登録" %>
-    <% end %>
+<%= form_with model: @part, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  <%= f.text_field :name, placeholder: "名称" %><br />
+  <%= f.text_field :number, placeholder: "規格" %><br />
+  <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"part-select"}) %><br />
+  <%= f.text_field :material, placeholder: "材料" %><br />
+  <%= f.text_field :price, placeholder: "価格" %><br />
+  <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}, {class:"part-select"}) %><br />
+  <%= f.file_field :image, id:"part-image" %><br />
+  <%= f.submit "部品登録" %>
+<% end %>
