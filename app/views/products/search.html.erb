@@ -1,0 +1,9 @@
+<%= form_with(url: search_tweets_path, local: true, method: :get, class: "search-form") do |f| %>
+  <%= f.text_field :keyword, placeholder: "製品を検索する", class: "search-input" %>
+  <%= f.submit "検索", class: "search-btn" %>
+<% end %>
+<div class="contents row">
+  <% @products.each do |product| %>
+    <%= render partial: "product", locals: { product: product } %>
+  <% end %>
+</div>

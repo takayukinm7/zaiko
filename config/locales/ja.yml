@@ -13,3 +13,6 @@ ja:
         supplier_id: サプライヤー
         image: 図面
         user: ユーザー
+      product: 
+        name: 製品名称
+        user: ユーザー
