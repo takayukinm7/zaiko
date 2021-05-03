@@ -11,7 +11,6 @@ class PartsController < ApplicationController
   end
 
   def create
-    binding.pry
     @part = Part.create(part_params)
     if @part.save
       redirect_to root_path

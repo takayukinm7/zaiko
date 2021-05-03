@@ -1,6 +1,9 @@
 ja:
   activerecord:
     attributes:
+      user:
+        name: 氏名
+        number: 社員番号
       part:
         name: 部品名称
         number: 規格
@@ -9,3 +12,4 @@ ja:
         category_id: カテゴリー
         supplier_id: サプライヤー
         image: 図面
+        user: ユーザー

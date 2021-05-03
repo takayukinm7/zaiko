@@ -5,13 +5,12 @@ class Part < ApplicationRecord
     validates :name
     validates :number
     validates :material
-    validates :image
-    validates :price, format: { with: /\A[0-9]+\z/ }
+    validates :price ,numericality: { only_integer: true } 
     with_options numericality: { other_than: 1 , message: "を選択してください"} do
       validates :category_id
       validates :supplier_id
     end
-  end   
+  end
 
   belongs_to :user
   has_many :amount_of_necessary_part
