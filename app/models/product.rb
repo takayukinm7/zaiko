@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   end
 
   belongs_to :user
+  has_many :amount_of_necessary_part
 
   def self.search(search)
     if search != ""
