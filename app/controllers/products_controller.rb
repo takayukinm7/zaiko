@@ -2,9 +2,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show, :search]
 
-
   def index
-    @product = Product.includes(:user).order("create_at DESC")
+    @products = Product.includes(:user).order("created_at DESC")
   end
 
   def new
@@ -42,6 +41,12 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
   end
 
 end

@@ -13,7 +13,8 @@ class Part < ApplicationRecord
   end
 
   belongs_to :user
-  has_many :amount_of_necessary_part
+  has_many :amount_of_necessary_part, dependent: :destroy
+  has_many :products, through: :amount_of_necessary_parts
   has_one :parts_stock
   has_one_attached :image
 

@@ -1,4 +1,4 @@
-<%= form_with(url: search_product_path, local: true, method: :get, class: "search-form") do |f| %>
+<%= form_with(url: search_products_path, local: true, method: :get, class: "search-form") do |f| %>
   <%= f.text_field :keyword, placeholder: "製品を検索する", class: "search-input" %>
   <%= f.submit "検索", class: "search-btn" %>
 <% end %>
@@ -6,7 +6,6 @@
   <% @products.each do |product| %>
     <div class="content_post">
       <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
           <li>
             <%= link_to '詳細', product_path(product.id), method: :get %>

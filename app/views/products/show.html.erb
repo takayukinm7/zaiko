@@ -2,18 +2,31 @@
   <div class="content_post">
     <% if user_signed_in? && current_user.id == @product.user_id %>
       <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
           <li>
-            <%= link_to '編集', edit_product_path(product.id), method: :get %>
+            <%= link_to '編集', edit_product_path(@product.id), method: :get %>
           </li>
           <li>
-            <%= link_to '削除', product_path(product.id), method: :delete %>
+            <%= link_to '削除', product_path(@product.id), method: :delete %>
           </li>
         </ul>
       </div>
     <% end %>
-    <span class="name"><%= @product.name %>
-    </span>
+    <span class="name"><%= @product.name %></span>
   </div>
+  <%= form_with model: @amount_of_necessary_part, local:true do |f|%>
+    <select name="amount_of_necessary_part[part_ids][]">
+      <option value="">使用する部品を選択してください</option>
+      <% Part.all.each do |part| %>
+        <option>部品名称:<%=part.name %>,規格:<%= part.number %></option>
+      <% end %>  
+    </select>
+    <%=f.text_field :count, placeholder: "数量"%>
+    <%=f.submit "数量登録" %>
+  <% end %>
 </div>
+
+
+
+
+  
