@@ -1,0 +1,2 @@
+class PartCount < ApplicationRecord
+end
