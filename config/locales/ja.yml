@@ -16,3 +16,17 @@ ja:
       product: 
         name: 製品名称
         user: ユーザー
+  activemodel:
+    attributes:
+      stock_form:
+        name: 部品名称
+        number: 規格
+        material: 材料
+        price: 価格
+        category_id: カテゴリー
+        supplier_id: サプライヤー
+        image: 図面
+        user: ユーザー
+        still_extant: 在庫数
+        lot: ロット
+        buy_point: 購入点
