@@ -2,7 +2,6 @@
   <div class="content_post" style="background-image: url(<%= @part.image %>);">
     <% if user_signed_in? && current_user.id == @part.user_id %>
       <div class="more">
-        <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
           <li>
             <%= link_to '編集', edit_part_path(@part.id), method: :get %>
@@ -16,6 +15,6 @@
     <p><%= @part.name %></p>
     <span class="name"><%= @part.name %>
     </span>
-    <%= image_tag @part.image%>
+    <%= image_tag @part.image.variant(resize: '500x500'), class: 'part-image' if @part.image.attached? %>
   </div>
 </div>
