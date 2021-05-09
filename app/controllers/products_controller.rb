@@ -46,7 +46,7 @@ class ProductsController < ApplicationController
   end
 
   def count_form_params
-    params.require(:count_form).permit(:count).merge(product_id: product.id, part_id: part.id)
+    params.require(:count_form).permit(:count).merge(product_id: product_id, part_id: part_id)
   end
 
   def set_product

@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 2021_05_08_025209) do
 
   create_table "part_counts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "count", null: false
-    t.bigint "product_parts_id", null: false
+    t.bigint "product_part_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_parts_id"], name: "index_part_counts_on_product_parts_id"
+    t.index ["product_part_id"], name: "index_part_counts_on_product_part_id"
   end
 
   create_table "part_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_025209) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "part_counts", "product_parts", column: "product_parts_id"
+  add_foreign_key "part_counts", "product_parts"
   add_foreign_key "part_stocks", "parts"
   add_foreign_key "parts", "users"
   add_foreign_key "product_parts", "parts"
