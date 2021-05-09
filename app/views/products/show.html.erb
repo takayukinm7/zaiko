@@ -14,8 +14,8 @@
     <% end %>
     <span class="name"><%= @product.name %></span>
   </div>
-  <%= form_with model: @amount_of_necessary_part, local:true do |f|%>
-    <select name="amount_of_necessary_part[part_ids][]">
+  <%= form_with(model: @count_form, url: products_path, local: true) do |f| %>
+    <select name="product[part_ids][]">
       <option value="">使用する部品を選択してください</option>
       <% Part.all.each do |part| %>
         <option>部品名称:<%=part.name %>,規格:<%= part.number %></option>

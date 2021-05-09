@@ -7,11 +7,17 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @count_form = CountForm.new
   end
 
   def create
-    Product.create(product_params)
+    @count_form = CountForm.new(count_form_params)
+    if @count_form.valid?
+      @count_form.save
+      redirect_to root_path
+    else
+      render action: :new
+    end
   end
 
   def destroy
@@ -37,6 +43,10 @@ class ProductsController < ApplicationController
   private
   def product_params
     params.require(:product).permit(:name).merge(user_id: current_user.id)
+  end
+
+  def count_form_params
+    params.require(:count_form).permit(:count).merge(product_id: product.id, part_id: part.id)
   end
 
   def set_product
