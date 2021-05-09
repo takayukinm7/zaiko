@@ -33,13 +33,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @count_form = CountForm.new(count_form_params)
-    if @count_form.valid?
-      @count_form.save
-      redirect_to root_path
-    else
-      render action: :new
-    end
   end
 
   def search
@@ -66,3 +59,11 @@ class ProductsController < ApplicationController
   end
 
 end
+
+#@count_form = CountForm.new(count_form_params)
+#    if @count_form.valid?
+ #     @count_form.save
+  #    redirect_to root_path
+   # else
+    #  render action: :new
+    #end
