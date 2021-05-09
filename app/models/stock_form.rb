@@ -22,6 +22,6 @@ class StockForm
 
   def save
     part = Part.create(user_id: user_id, name: name, number: number, material: material, price: price, category_id: category_id, supplier_id: supplier_id)
-    Part_stock.create(part_id: part.id, still_extant: still_extant, lot: lot, buy_point: buy_point)
+    PartStock.create(part_id: part.id, still_extant: still_extant, lot: lot, buy_point: buy_point)
   end
 end

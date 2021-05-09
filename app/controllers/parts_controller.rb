@@ -46,9 +46,9 @@ class PartsController < ApplicationController
   end
 
   def stock_form_params
-    params.require(:stock_form).permit(:still_extant, :lot, :buy_point).merge(user_id: current_user.id)
+    params.require(:stock_form).permit(:name, :number, :category_id, :material, :price, :supplier_id, :still_extant, :lot, :buy_point).merge(user_id: current_user.id)
   end
-
+ 
   def set_part
     @part = Part.find(params[:id])
   end
