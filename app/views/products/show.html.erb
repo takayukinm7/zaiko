@@ -4,7 +4,7 @@
       <div class="more">
         <ul class="more_list">
           <li>
-            <%= link_to '編集', edit_product_path(@product.id), method: :get %>
+            <%= link_to '編集・部品の登録', edit_product_path(@product.id), method: :get %>
           </li>
           <li>
             <%= link_to '削除', product_path(@product.id), method: :delete %>
@@ -17,16 +17,5 @@
 </div>
 
 
-  <%= form_with(model: @count_form, url: products_path, local: true) do |f| %>
-    <select name="product[part_ids][]">
-      <option value="">使用する部品を選択してください</option>
-      <% Part.all.each do |part| %>
-        <option value=<%= part.id %>>部品名称:<%=part.name %>,規格:<%= part.number %></option>
-      <% end %>  
-    </select>
-    <input name="product[part_ids][]" type="hidden" value=<%= product.id %>>
-    <%=f.text_field :count, placeholder: "数量"%>
-    <%=f.submit "数量登録" %>
-  <% end %>
 
   

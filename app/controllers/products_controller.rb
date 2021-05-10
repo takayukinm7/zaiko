@@ -28,8 +28,13 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update(product_params)
+    @count_form = CountForm.new(count_form_params)
+      if @count_form.valid?
+        @count_form.save
+        redirect_to root_path
+      else
+        render action: :edit
+      end
   end
 
   def show
@@ -60,10 +65,3 @@ class ProductsController < ApplicationController
 
 end
 
-#@count_form = CountForm.new(count_form_params)
-#    if @count_form.valid?
- #     @count_form.save
-  #    redirect_to root_path
-   # else
-    #  render action: :new
-    #end
