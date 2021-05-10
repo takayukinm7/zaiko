@@ -14,6 +14,9 @@
     <% end %>
     <span class="name"><%= @product.name %></span>
   </div>
+</div>
+
+
   <%= form_with(model: @count_form, url: products_path, local: true) do |f| %>
     <select name="product[part_ids][]">
       <option value="">使用する部品を選択してください</option>
@@ -25,9 +28,5 @@
     <%=f.text_field :count, placeholder: "数量"%>
     <%=f.submit "数量登録" %>
   <% end %>
-</div>
-
-
-
 
   
