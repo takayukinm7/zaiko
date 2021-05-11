@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :part_lists, only: :create
   end
 end
