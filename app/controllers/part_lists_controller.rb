@@ -30,7 +30,6 @@ class PartListsController < ApplicationController
     end
   
     def update
-      binding.pry
       @product.update(product_params)
       
     end
