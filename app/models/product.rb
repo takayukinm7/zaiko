@@ -5,8 +5,7 @@ class Product < ApplicationRecord
   end
 
   belongs_to :user
-  has_many :product_parts, dependent: :destroy
-  has_many :parts, through: :product_parts
+  has_one :part_list
   
 
   def self.search(search)

@@ -4,7 +4,7 @@ class Part < ApplicationRecord
 
   belongs_to :user
   has_many :product_parts, dependent: :destroy
-  has_many :products, through: :product_parts
+  has_many :part_lists, through: :product_parts
   has_one :part_stock
   has_one_attached :image
 
