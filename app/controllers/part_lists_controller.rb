@@ -1,0 +1,2 @@
+class PartListsController < ApplicationController
+end

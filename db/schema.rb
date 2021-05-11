@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_025209) do
+ActiveRecord::Schema.define(version: 2021_05_05_120239) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -39,16 +39,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_025209) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_part_id"], name: "index_part_counts_on_product_part_id"
-  end
-
-  create_table "part_stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "still_extant", null: false
-    t.integer "lot", null: false
-    t.integer "buy_point", null: false
-    t.bigint "part_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["part_id"], name: "index_part_stocks_on_part_id"
   end
 
   create_table "parts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -98,7 +88,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_025209) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "part_counts", "product_parts"
-  add_foreign_key "part_stocks", "parts"
   add_foreign_key "parts", "users"
   add_foreign_key "product_parts", "parts"
   add_foreign_key "product_parts", "products"
