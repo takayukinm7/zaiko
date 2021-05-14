@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
-  before_action :set_product, only: [:edit, :show, :update, :destory]
+  before_action :set_product, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     @product.destroy
     redirect_to products_path
   end

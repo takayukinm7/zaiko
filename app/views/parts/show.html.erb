@@ -12,7 +12,6 @@
         </ul>
       </div>
     <% end %>  
-    <p><%= @part.name %></p>
     <span class="name"><%= @part.name %>
     </span>
     <%= image_tag @part.image.variant(resize: '500x500'), class: 'part-image' if @part.image.attached? %>
