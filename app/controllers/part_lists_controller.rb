@@ -31,7 +31,6 @@ class PartListsController < ApplicationController
   
     def update
       @product.update(product_params)
-      
     end
   
     def show

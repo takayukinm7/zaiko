@@ -1,9 +1,6 @@
 <div class="contents row">
   <div class="container">
     <h3>製品を登録する</h3>
-    <%= form_with(model: @product, local: true) do |f| %>
-      <%= f.text_field :name, placeholder: "製品名称" %>
-      <%= f.submit "製品登録" %>
-    <% end %>
+    <%= render partial: "form" %>
   </div>
 </div>

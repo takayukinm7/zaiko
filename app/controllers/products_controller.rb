@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show, :search]
+  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :set_product, only: [:edit, :show, :update, :destory]
+  before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.includes(:user).order("created_at DESC")
@@ -15,25 +16,23 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to products_path
     else
-      render action: :new
+      render :new
     end
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
+    @product.destroy
+    redirect_to products_path
   end
 
   def edit
-
   end
 
   def update
-    product = Product.find(params[:id])
-    if @product.save
+    if @product.update(product_params)
       redirect_to products_path
     else
-      render action: :edit
+      render :edit
     end
   end
 
@@ -54,9 +53,7 @@ class ProductsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @product.user_id == current_user.id
   end
 
 end

@@ -29,8 +29,11 @@ class PartsController < ApplicationController
   end
 
   def update
-    part = Part.find(params[:id])
-    part.update(part_params)
+    if @stock_form.update(stock_form_params)
+      redirect_to part_path(@stock_form.id)
+    else
+      render :edit
+    end
   end
 
   def show

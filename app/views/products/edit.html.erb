@@ -1,22 +1,6 @@
 <div class="contents row">
   <div class="container">
-    <h3>編集する・部品の追加</h3>
-    <%= form_with(model: @count_form, url: products_path, local: true) do |f| %>
-      <%# 製品情報の入力 %>
-      <%= f.text_field :name, placeholder: "製品名称" %>
-      <%# /製品情報の入力 %>
-      <%# 使用部品の追加 %>
-      <select name="product[part_ids][]">
-        <option value="">使用する部品を選択してください</option>
-          <% Part.all.each do |part| %>
-            <option value=<%= part.id %>>部品名称:<%=part.name %>,規格:<%= part.number %></option>
-          <% end %>  
-      </select>
-      <%# /使用部品の追加 %>
-      <%# 使用部品の数量登録 %>
-      <%=f.text_field :count, placeholder: "数量"%>
-      <%# /使用部品の数量登録 %>
-      <%= f.submit "製品情報の編集" %>
-    <% end %>
+    <h3>製品を編集する</h3>
+    <%= render partial: "form" %>
   </div>
 </div>
