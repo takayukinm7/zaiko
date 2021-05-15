@@ -1,5 +1,7 @@
 <div class="contents row">
   <div class="content_post" style="background-image: url(<%= @part.image %>);">
+    <span class="name"><%= @part.name %></span>
+    <%= image_tag @part.image.variant(resize: '500x500'), class: 'part-image' if @part.image.attached? %>
     <% if user_signed_in? && current_user.id == @part.user_id %>
       <div class="more">
         <ul class="more_list">
@@ -12,8 +14,5 @@
         </ul>
       </div>
     <% end %>  
-    <span class="name"><%= @part.name %>
-    </span>
-    <%= image_tag @part.image.variant(resize: '500x500'), class: 'part-image' if @part.image.attached? %>
   </div>
 </div>

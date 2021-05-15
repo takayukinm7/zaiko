@@ -5,6 +5,9 @@
 <div class="contents row">
   <% @products.each do |product| %>
     <div class="content_post">
+      <span class="name">
+        <%= product.name %>
+      </span>
       <div class="more">
         <ul class="more_list">
           <li>
@@ -12,9 +15,6 @@
           </li>
         </ul>
       </div>
-      <span class="name">
-        <%= product.name %>
-      </span>
     </div>
   <% end %>
 </div>

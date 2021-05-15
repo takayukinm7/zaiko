@@ -1,5 +1,4 @@
 class PartsController < ApplicationController
-  before_action :set_part, only: [:edit, :show]
   before_action :move_to_index, except: [:index, :show, :search]
 
   def index 
@@ -26,10 +25,14 @@ class PartsController < ApplicationController
   end
 
   def edit
+    @part = Part.find(params[:id])
+    @stock_form = StockForm.new(part: @part)
   end
 
   def update
-    if @stock_form.update(stock_form_params)
+    @stock_form = StockForm.new(stock_form_params)
+    if @stock_form.valid? 
+      @stock_form.update
       redirect_to part_path(@stock_form.id)
     else
       render :edit
@@ -37,6 +40,7 @@ class PartsController < ApplicationController
   end
 
   def show
+    @part = Part.find(params[:id])
   end
 
   def search
@@ -50,10 +54,6 @@ class PartsController < ApplicationController
 
   def stock_form_params
     params.require(:stock_form).permit(:name, :number, :category_id, :material, :price, :supplier_id,:still_extant, :lot, :buy_point).merge(user_id: current_user.id)
-  end
-
-  def set_part
-    @part = Part.find(params[:id])
   end
 
   def move_to_index

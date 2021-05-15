@@ -19,9 +19,38 @@ class StockForm
     end
   end
   
+  def initialize(attributes = nil, part: Part.new)
+    @part = part
+    attributes ||= default_attributes
+    super(attributes)
+  end
+
+  def to_model
+    @part
+  end
 
   def save
     part = Part.create(user_id: user_id, name: name, number: number, material: material, price: price, category_id: category_id, supplier_id: supplier_id)
     PartStock.create(part_id: part.id, still_extant: still_extant, lot: lot, buy_point: buy_point)
+  end
+
+  def update
+    part = Part.update(user_id: user_id, name: name, number: number, material: material, price: price, category_id: category_id, supplier_id: supplier_id)
+    PartStock.update(part_id: part.id, still_extant: still_extant, lot: lot, buy_point: buy_point)
+  end
+
+  private
+
+  attr_reader :products
+
+  def default_attributes
+    {
+      name: @part.name,
+      number: @part.number,
+      material: @part.material,
+      price: @part.price,
+      category_id: @part.category_id,
+      supplier_id: @part.supplier_id
+    }
   end
 end
