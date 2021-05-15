@@ -1,11 +1,5 @@
 <div class="content_post" style="background-image: url(<%= part.image %>);">
   <div class="more">
-    <p><%= part.name %></p>
-     <ul class="more_list">
-        <li>
-          <%= link_to '詳細', part_path(part.id), method: :get %>
-        </li>
-      </ul>
-    </div>
+    <%= link_to part.name, part_path(part.id), method: :get %>
   </div>
 </div>

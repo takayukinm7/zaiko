@@ -2,19 +2,12 @@
   <%#= f.text_field :keyword, placeholder: "製品を検索する", class: "search-input" %>
   <%#= f.submit "検索", class: "search-btn" %>
 <%# end %>
+<p>製品一覧</p>
 <div class="contents row">
   <% @products.each do |product| %>
     <div class="content_post">
-      <span class="name">
-        <%= product.name %>
-      </span>
-      <div class="more">
-        <ul class="more_list">
-          <li>
-            <%= link_to '詳細', product_path(product.id), method: :get %>
-          </li>
-        </ul>
-      </div>
+      <p>製品名称</p>
+      <%= link_to product.name, product_path(product.id), method: :get %>
     </div>
   <% end %>
 </div>
