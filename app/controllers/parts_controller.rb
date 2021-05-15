@@ -26,6 +26,7 @@ class PartsController < ApplicationController
 
   def edit
     @part = Part.find(params[:id])
+    @part_stock = PartStock.find(params[:id])
     @stock_form = StockForm.new(part: @part)
   end
 
