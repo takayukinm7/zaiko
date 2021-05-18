@@ -1,0 +1,9 @@
+<%= "注文書" %>
+<div class="order-info">
+  発注者　　　　：<%= @current_user %>
+  発注日　　　　：<%= f.text_field %>
+  部品名称　　　：<%= @part.name %>
+  発注数　　　　：<%= @part_stocks.lot %>
+  サプライヤー　：<%= @part.supplier_id %>
+  備考　　　　　：<%= f.text_field %>
+</div>

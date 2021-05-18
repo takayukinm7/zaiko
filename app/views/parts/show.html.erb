@@ -7,7 +7,7 @@
           <%#= link_to '編集', edit_part_path(@part.id), method: :get %>
           <%#= link_to '削除', part_path(@part.id), method: :delete %>
       </div>
-      <%= link_to "部品を発注する", part_stock_path(@part.id) %>
+      <%= link_to "#{@part.name}を発注する", part_part_stocks_path(@part.id) %>
     <% end %>  
   </div>
 </div>
