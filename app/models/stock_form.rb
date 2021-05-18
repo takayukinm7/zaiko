@@ -25,9 +25,9 @@ class StockForm
     #super(attributes)
   #end
 
-  #def to_model
-    #@part
-  #end
+  def to_model
+    @part
+  end
 
   def save
     part = Part.create(user_id: user_id, name: name, number: number, material: material, price: price, category_id: category_id, supplier_id: supplier_id)
@@ -39,12 +39,12 @@ class StockForm
     PartStock.update(part_id: part.id, still_extant: still_extant, lot: lot, buy_point: buy_point)
   end
 
-  #private
+  private
 
-  #attr_reader :part
+  attr_reader :part
 
-  #def default_attributes
-    #{
+  def default_attributes
+    {
       #name: @part.name,
       #number: @part.number,
       #material: @part.material,
@@ -54,6 +54,6 @@ class StockForm
       #still_extant: @part.part_stock.(:still_extant),
       #lot: @part_stock.lot,
       #buy_point: @part_stock.buy_point
-    #}
-  #end
+    }
+  end
 end

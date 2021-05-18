@@ -5,8 +5,9 @@
     <% if user_signed_in? && current_user.id == @part.user_id %>
       <div class="more">
           <%#= link_to '編集', edit_part_path(@part.id), method: :get %>
-          <%= link_to '削除', part_path(@part.id), method: :delete %>
+          <%#= link_to '削除', part_path(@part.id), method: :delete %>
       </div>
+      <%= link_to "部品を発注する", part_stock_path(@part.id) %>
     <% end %>  
   </div>
 </div>

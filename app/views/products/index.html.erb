@@ -6,7 +6,6 @@
 <div class="contents row">
   <% @products.each do |product| %>
     <div class="content_post">
-      <p>製品名称</p>
       <%= link_to product.name, product_path(product.id), method: :get %>
     </div>
   <% end %>

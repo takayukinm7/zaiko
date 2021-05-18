@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    resources :part_stocks, only: :index
   end
   resources :products do
     collection do

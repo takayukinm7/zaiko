@@ -1,0 +1,2 @@
+class PartStocksController < ApplicationController
+end
