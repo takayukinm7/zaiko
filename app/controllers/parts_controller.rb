@@ -6,42 +6,39 @@ class PartsController < ApplicationController
   end
 
   def new
-    @stock_form = StockForm.new
+    @part = Part.new
   end
 
   def create
-    @stock_form = StockForm.new(stock_form_params)
-    if @stock_form.valid?
-      @stock_form.save
+    @part = Part.new(part_params)
+    if @part.save
       redirect_to root_path
     else
-      render action: :new
+      render :new
     end
   end
 
   def destroy
     part = Part.find(params[:id])
     part.destroy
+    redirect_to root_path
   end
 
   def edit
-    @part = Part.find(params[:id])
-    @part_stock = PartStock.find(params[:id])
-    @stock_form = StockForm.new(part: @part)
+    load_part
   end
 
   def update
-    @stock_form = StockForm.new(stock_form_params)
-    if @stock_form.valid? 
-      @stock_form.update
-      redirect_to part_path(@stock_form.id)
+    load_part
+    if @part.update(part_params)
+      redirect_to root_path(@part.id)
     else
       render :edit
     end
   end
 
   def show
-    @part = Part.find(params[:id])
+    load_part
   end
 
   def search
@@ -53,8 +50,8 @@ class PartsController < ApplicationController
     params.require(:part).permit(:name, :number, :category_id, :material, :price, :supplier_id, :image).merge(user_id: current_user.id)
   end
 
-  def stock_form_params
-    params.require(:stock_form).permit(:name, :number, :category_id, :material, :price, :supplier_id,:still_extant, :lot, :buy_point).merge(user_id: current_user.id)
+  def load_part
+    @part = Part.find(params[:id])
   end
 
   def move_to_index

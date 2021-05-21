@@ -2,14 +2,24 @@ class PartStocksController < ApplicationController
   def index
     @part = Part.find(params[:id])
   end
-end
+
+  def new
+    @part_stock = PartStock.new
+  end
+
+  def create
+    @part_stock = PartStock.new(part_stock_params)
+    if @part_stock.save
+      redirect_to root_path
+    else
+      render :new
+    end
+  end
 
 private
 
-def part_params
-  params.require(:part).permit(:name, :number, :category_id, :material, :price, :supplier_id, :image).merge(user_id: current_user.id)
-end
+  def part_stock_params
+    params.require(:part_stock).permit(:still_extant, :lot, :buy_point).merge(part_id: params[:part_id])
+  end
 
-def stock_form_params
-  params.require(:stock_form).permit(:name, :number, :category_id, :material, :price, :supplier_id,:still_extant, :lot, :buy_point).merge(user_id: current_user.id)
 end

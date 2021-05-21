@@ -4,9 +4,10 @@
     <%= image_tag @part.image.variant(resize: '500x500'), class: 'part-image' if @part.image.attached? %>
     <% if user_signed_in? && current_user.id == @part.user_id %>
       <div class="more">
-          <%#= link_to '編集', edit_part_path(@part.id), method: :get %>
-          <%#= link_to '削除', part_path(@part.id), method: :delete %>
+          <%= link_to '編集', edit_part_path(@part.id), method: :get %>
+          <%= link_to '削除', part_path(@part.id), method: :delete %>
       </div>
+      <%= link_to "#{@part.name}の在庫登録をする", new_part_part_stock_path(@part.id) %><br/>
       <%= link_to "#{@part.name}を発注する", part_part_stocks_path(@part.id) %>
     <% end %>  
   </div>

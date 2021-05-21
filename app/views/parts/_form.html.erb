@@ -1,4 +1,4 @@
-<%= form_with(model: @stock_form, url: parts_path, local: true) do |f| %>
+<%= form_with(model: @part, local: true) do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
   <%# 部品情報の入力 %>
   <%= f.text_field :name, placeholder: "部品名称" %><br />
@@ -8,11 +8,6 @@
   <%= f.text_field :price, placeholder: "価格" %><br />
   <%= f.collection_select(:supplier_id, Supplier.all, :id, :name, {}, {class:"part-select"}) %><br />
   <%= f.file_field :image, id:"part-image" %><br />
-  <%# /部品情報の入力 %>
-  <%# 在庫情報の入力 %>
-  <%= f.text_field 'still_extant', class:"input-default", id:"still_extant", placeholder:"在庫点数" %><br/>
-  <%= f.text_field 'lot', class:"input-default", id:"lot", placeholder:"発注ロット" %><br/>
-  <%= f.text_field 'buy_point', class:"input-default", id:"buy_point", placeholder:"購入点(在庫数が購入点を下回ったら部品の発注を行う)" %><br/> 
-  <%# /在庫情報の入力 %>  
+  <%# /部品情報の入力 %> 
   <%= f.submit "部品登録" %>
 <% end %>
