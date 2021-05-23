@@ -31,7 +31,7 @@ class PartsController < ApplicationController
   def update
     load_part
     if @part.update(part_params)
-      redirect_to part_path(@part.id)
+      redirect_to parts_path
     else
       render :edit
     end
