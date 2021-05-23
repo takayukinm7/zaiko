@@ -1,6 +1,6 @@
 class PartStocksController < ApplicationController
   def index
-    @part = Part.find(params[:id])
+
   end
 
   def new
@@ -16,10 +16,26 @@ class PartStocksController < ApplicationController
     end
   end
 
+  def edit
+    load_stock
+  end
+
+  def update
+    load_stock
+    if @part_stock.update(part_stock_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
 private
 
   def part_stock_params
     params.require(:part_stock).permit(:still_extant, :lot, :buy_point).merge(part_id: params[:part_id])
   end
 
+  def load_stock
+    @part_stock = PartStock.find(params[:id])
+  end
 end
