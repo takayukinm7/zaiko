@@ -19,8 +19,8 @@ class PartsController < ApplicationController
   end
 
   def destroy
-    part = Part.find(params[:id])
-    part.destroy
+    load_part
+    @part.destroy
     redirect_to root_path
   end
 
@@ -31,7 +31,7 @@ class PartsController < ApplicationController
   def update
     load_part
     if @part.update(part_params)
-      redirect_to root_path(@part.id)
+      redirect_to part_path(@part.id)
     else
       render :edit
     end
