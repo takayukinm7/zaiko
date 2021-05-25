@@ -22,8 +22,8 @@ class PartStocksController < ApplicationController
 
   def update
     load_stock
-    if @part_stock.update(part_stock_params)
-      redirect_to root_path
+    if part_stock.update(part_stock_params)
+      redirect_to part_part_stocks_path(@part)
     else
       render :edit
     end

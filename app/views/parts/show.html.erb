@@ -10,7 +10,7 @@
       <% if user_signed_in? && @part.part_stock.nil? %>
         <%= link_to "#{@part.name}の在庫登録をする", new_part_part_stock_path(@part.id) %><br/>
       <% else %>
-        <%= link_to "#{@part.name}の在庫情報の編集をする", edit_part_part_stock_path(@part.id) %><br/>
+        <%#= link_to "#{@part.name}の在庫情報の編集をする", edit_part_part_stock_path(@part.id) %>
         <%= link_to "#{@part.name}を発注する", part_part_stocks_path(@part.id) %>
       <% end %>
     <% end %>  
