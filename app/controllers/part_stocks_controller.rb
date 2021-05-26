@@ -1,6 +1,8 @@
 class PartStocksController < ApplicationController
   def index
-
+    @part = Part.find(params[:part_id])
+    load_stock
+    load_today
   end
 
   def new
@@ -36,6 +38,10 @@ private
   end
 
   def load_stock
-    @part_stock = PartStock.find(params[:id])
+    @part_stock = PartStock.find(params[:part_id])
+  end
+
+  def load_today
+    @today = Date.current.strftime('%Y/%m/%d')
   end
 end

@@ -1,9 +1,9 @@
 <%= "注文書" %>
 <div class="order-info">
-  発注者　　　　：<%= @current_user %><br/>
-  発注日　　　　：<%#= f.text_field %><br/>
-  部品名称　　　：<%= @part.name %><br/>
-  発注数　　　　：<%#= @part_stocks.lot %><br/>
-  サプライヤー　：<%= @part.supplier_id %><br/>
-  備考　　　　　：<%#= f.text_field %><br/>
+  発注者　　　　：<%= current_user.name %><br/>
+  発注日　　　　：<%= @today %><br/>
+  部品名称　　　：<%= @part_stock.part.name %><br/>
+  発注数　　　　：<%= @part_stock.lot %><br/>
+  サプライヤー　：<%= @part_stock.part.supplier.name %><br/>
+  備考　　　　　：<%= text_field 'option', size: "100x25", placeholder:"備考があれば追記" %><br/>
 </div>
