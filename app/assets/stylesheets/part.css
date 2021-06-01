@@ -1,0 +1,8 @@
+.part-name{
+  font-size: 25px;
+}
+
+.part-all-data{
+  display: flex;
+  justify-content: space-between;
+}

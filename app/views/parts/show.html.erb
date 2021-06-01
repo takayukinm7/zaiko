@@ -1,16 +1,18 @@
 <div class="contents row">
   <div class="content_post" style="background-image: url(<%= @part.image %>);">
-    <span class="name"><%= @part.name %></span>
-    <div class="part-data">
-    部品詳細情報一覧<br/>
-    部品名称　　　：<%= @part.name %><br/>
-    規格　　　　　：<%= @part.number %><br/>
-    カテゴリー　　：<%= @part.category.name %><br/>
-    材料　　　　　：<%= @part.material %><br/>
-    価格　　　　　：<%= @part.price %>円<br/>
-    サプライヤー　：<%= @part.supplier.name %><br/>
+    <span class="part-name"><%= @part.name %></span>
+    <div class="part-all-data">
+      <div class="part-data">
+      部品詳細情報一覧<br/>
+      部品名称　　　：<%= @part.name %><br/>
+      規格　　　　　：<%= @part.number %><br/>
+      カテゴリー　　：<%= @part.category.name %><br/>
+      材料　　　　　：<%= @part.material %><br/>
+      価格　　　　　：<%= @part.price %>円<br/>
+      サプライヤー　：<%= @part.supplier.name %><br/>
+      </div>
+      <%= image_tag @part.image.variant(resize: '900x900'), class: 'part-image' if @part.image.attached? %>
     </div>
-    <%= image_tag @part.image.variant(resize: '500x500'), class: 'part-image' if @part.image.attached? %>
     <% if user_signed_in? && current_user.id == @part.user_id %>
       <div class="more">
           <%= link_to '編集', edit_part_path(@part.id), method: :get %>
