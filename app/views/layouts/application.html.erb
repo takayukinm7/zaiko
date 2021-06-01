@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Zaiko</title>
+    <title>No-Zaiko-No-Life</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
@@ -11,10 +11,12 @@
 
   <body>
     <header class="header">
-      <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">Zaiko</a></h1>
+      <h1 class="title"><a href="/">No-Zaiko-No-Life</a></h1>
+      <div class="header_bar">
+        <div class="ichiran">
         <%= link_to "部品一覧", parts_path, class: "post" %>
         <%= link_to "製品一覧", products_path, class: "post" %>
+        </div>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -29,8 +31,10 @@
         <% end %>
       </div>
     </header>
+    <div class="content">
     <%= yield %>
-    <footer>
+    </div>
+    <footer class="footer">
       <p>
         在庫管理
       </p>
