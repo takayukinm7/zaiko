@@ -42,7 +42,7 @@ class PartListsController < ApplicationController
     private
   
     def count_form_params
-      params.require(:count_form).permit(:naem, :count).merge(product_id: product_id, part_id: part_ids: [])
+      params.require(:count_form).permit(:naem, :count).merge(product_id: product_id, part_id: part_id)
     end
   
     def set_product
