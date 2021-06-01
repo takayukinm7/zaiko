@@ -18,42 +18,40 @@ class PartListsController < ApplicationController
         else
           render action: :new
         end
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+  end
+
+  def edit
+  end
+
+  def update
+    @product.update(product_params)
+  end
+
+  def show
+  end
+  
+  def search
+    @products = Product.search(params[:keyword])
+  end
+
+  private
+  
+  def count_form_params
+    params.require(:count_form).permit(:naem, :count).merge(product_id: product_id, part_id: part_id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
     end
-  
-    def destroy
-      product = Product.find(params[:id])
-      product.destroy
-    end
-  
-    def edit
-    end
-  
-    def update
-      @product.update(product_params)
-    end
-  
-    def show
-    end
-  
-    def search
-      @products = Product.search(params[:keyword])
-    end
-  
-    private
-  
-    def count_form_params
-      params.require(:count_form).permit(:naem, :count).merge(product_id: product_id, part_id: part_id)
-    end
-  
-    def set_product
-      @product = Product.find(params[:id])
-    end
-  
-    def move_to_index
-      unless user_signed_in?
-        redirect_to action: :index
-      end
-    end
-  
   end
 end
