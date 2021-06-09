@@ -15,14 +15,18 @@
     </div>
     <% if user_signed_in? && current_user.id == @part.user_id %>
       <div class="more">
-          <%= link_to '編集', edit_part_path(@part.id), method: :get %>
-          <%= link_to '削除', part_path(@part.id), method: :delete %>
+          <%= link_to '部品情報の編集', edit_part_path(@part.id), method: :get %>
+          <%= link_to '部品情報の削除', part_path(@part.id), method: :delete %>
       </div>
       <% if user_signed_in? && @part.part_stock.nil? %>
         <%= link_to "#{@part.name}の在庫登録をする", new_part_part_stock_path(@part.id) %><br/>
       <% else %>
-        <%#= link_to "#{@part.name}の在庫情報の編集をする", edit_part_part_stock_path(@part.id) %>
-        <%= link_to "#{@part.name}を発注する", part_part_stocks_path(@part.id) %>
+      部品在庫情報<br/>
+        在庫数　　　　：<%= @part.part_stock.still_extant %><br/>
+        発注数　　　　：<%= @part.part_stock.lot %><br/>
+        購入点　　　　：<%= @part.part_stock.buy_point %><br/>
+        <%= link_to "#{@part.name}を発注する", part_part_stocks_path(@part.id) %><br/>
+        <%= link_to "#{@part.name}の在庫情報の編集をする", edit_part_part_stock_path(@part.id) %>
       <% end %>
     <% end %>  
   </div>

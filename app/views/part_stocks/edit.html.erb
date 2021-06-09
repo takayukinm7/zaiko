@@ -1,7 +1,7 @@
 <div class="contents row">
   <div class="container">
     <h3>部品の在庫情報を編集する</h3>
-      <%= form_with(@part_stock, url: part_part_stock_path, html: {method: 'PATCH'}) do |f| %>
+      <%= form_with(@part_stock, html: {method: 'PATCH'}) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
       <%# 在庫情報の入力 %>
       <%= f.text_field 'still_extant', class:"input-default", id:"still_extant", placeholder:"在庫点数" %><br/>
